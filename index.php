@@ -1,68 +1,105 @@
-<? 
-    //1е, 2e, 3е  задание
-    class item {
+<?
+    abstract class Good{
         private $title;
-        private $price;
-        private $color;
         private $quantity;
+        private $price;
+        const COST = 40;
+
+        public function getTitle(){
+            return $this->title;
+        }
+
+        public function setTitle($title){
+            return $this->title=$title;
+        }
+        public function getPrice(){
+            return $this->price;
+        }
+        public function getQuantity(){
+            return $this->quantity;
+        }
+        public function setQuantity($quantity){
+            return $this->quantity = $quantity;
+        }
+
+        abstract function finalPrice();
+        
+        abstract function render();
+
+        public function profit(){
+           return $this->finalPrice()-(($this->finalPrice()*self::COST)/100);
+        }
+        
+    }
+
+    class GoodDigital extends Good{
+        
+        const PRICE = 10000;
+        
+
+        public function __construct($title, $quantity){
+            $this->title=$title;
+            $this->quantity=$quantity;
+            $this->setPrice(); 
+        }
+        public function setPrice(){
+            return $this->price = self::PRICE;
+        }
+        public function finalPrice(){
+            return $this->quantity*$this->price;
+        }
+        public function render(){
+            echo $this->title." 1шт стоит".$this->price."руб колличество ".$this->quantity." итого: ".$this->finalPrice()." Чистая прибыль = ".$this->profit()."руб <br>";
+        }
+
+    }
+
+    class GoodPiece extends Good{
+        
+        public function __construct($title, $quantity){
+            $this->title=$title;
+            $this->quantity=$quantity;
+            $this->setPrice(); 
+        }
+        public function finalPrice(){
+            return $this->quantity*$this->price;
+        }
+        public function setPrice(){
+            return $this->price = GoodDigital::PRICE*2;
+        }
+        public function render(){
+            echo $this->title." стоит ".$this->price."руб, колличество ".$this->quantity." итого: ".$this->finalPrice()." Чистая прибыль = ".$this->profit()."руб <br>";
+        }
+    }
+
+
+    class GoodWeight extends Good{
+        
         private $weight;
-        function __constructor($title, $price, $color, $quantity, $weight){
-            $this->title = $title;
+
+        public function __construct($title, $quantity, $price){
+            $this->title=$title;
             $this->price = $price;
-            $this->color = $color;
+            $this->quantity = $quantity; 
         }
-        public function changeQuntity(){
-            $this->quantity ++ ;//Изменение колличества
+        public function finalPrice(){
+            return $this->quantity*$this->price;
         }
-        public function changeColor($colorParam){
-            $this->color = $colorParam; //Изменение цвета
+        
+        public function render(){
+            echo $this->title." стоит ".$this->price."руб за кг, колличество".$this->quantity."кг, итого: ".$this->finalPrice()." Чистая прибыль = ".$this->profit()."руб <br>";
         }
 
     }
 
-    //4е задание
+    $lessons = new GoodDigital("Онлайн уроки", 2);
+    $lessons->render();
 
-    class ItemCart extends Item {
-        private $availability; // Наследник отличается от родителя свойством доступности в каком либо магазине
-        function __construct($title, $price, $color, $quantity, $weight ,$availability){
-            parent::__construct($title, $price, $color, $quantity, $weight);
-            $this->availability = $speed;
-        }
-        public function creatingAnOrder(){
-            //И добавлен метод формирования заказа
-        }
-    }
+    $laptop = new GoodPiece("Ноутбук", 3);
+    $laptop->render();
 
-    //5е задание
-    //Ответ, будет выведено 1234, потому что $x задан статичным, и не будет создаваться заново при каждом вызове функции foo а будет увелечен на единицу
-    // class A { 
-    //     public function foo() {
-    //         static $x = 0;
-    //         echo ++$x;
-    //     }
-    // }
-    // $a1 = new A();
-    // $a2 = new A();
-    // $a1->foo();
-    // $a2->foo();
-    // $a1->foo();
-    // $a2->foo();
-    
-    //6е задание 
-    //Ответ, будет выведено 1122, т.к обьект $b1 создан от класса B который наследуется от класса A и соответственно вызов метода foo обьекта b1 не будет влиять на обьект a1 который создан от класса A
-    // class A {
-    //     public function foo() {
-    //         static $x = 0;
-    //         echo ++$x;
-    //     }
-    // }
-    // class B extends A {
-    // }
-    // $a1 = new A();
-    // $b1 = new B();
-    // $a1->foo(); 
-    // $b1->foo(); 
-    // $a1->foo(); 
-    // $b1->foo();
+    $cement = new GoodWeight("Цемент", 50, 300);
+    $cement->render();
 
-    ?>
+?>
+
