@@ -1,0 +1,32 @@
+.catalog-item {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 20px;
+  height: 500px;
+  justify-items: left;
+  align-items: center;
+}
+.catalog-item_img {
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.catalog-item_mark {
+  margin: 0;
+}
+.catalog-item_price {
+  font-weight: bold;
+}
+.catalog-item_addToCart {
+  margin: 0 auto;
+  font-size: 12px;
+  cursor: pointer;
+}
+.catalog-item_edit,
+.catalog-item_remove {
+  justify-items: center;
+  font-size: 12px;
+  margin: 5px auto;
+  color: red;
+}

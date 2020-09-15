@@ -1,0 +1,14 @@
+.good-card {
+  height: 85vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.good-card_img {
+  width: 30%;
+}
+.good-card_img-link {
+  text-align: center;
+}
+.good-card_description_title {
+  font-size: 24px;
+}

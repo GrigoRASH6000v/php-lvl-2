@@ -1,0 +1,20 @@
+.buttonSetting(@wh, @ht, @1clr, @2clr){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s linear; 
+    width: @wh;
+    height: @ht;
+    background-color: @1clr;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    color: black;
+    &:hover{
+        background-color: @2clr;
+        color: white;
+    }
+    &:active{
+        background-color: lighten(@2clr, 20%);
+    }
+}

@@ -1,0 +1,97 @@
+.cart{
+    display: grid;
+    grid-template-columns: 1fr;
+    box-sizing: border-box;
+    background-color: white;
+    padding: 50px;
+    //height: 83vh;
+    //width: 100%;
+    
+    //box-shadow: 1px 2px 10px @1BasicClr;
+    opacity: 1;
+    &_clear-btn{
+        .buttonSetting(150px, 40px, @1BasicClr, lighten(@2BasicClr, 10%));
+        font-size: 15px;
+    }
+    .cart_good{
+        
+        border-bottom: 1px solid @1BasicClr;
+        max-width: 1100px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr;
+        padding: 5px 0;
+        //align-items: center;
+        justify-items: center;
+        &_link{
+            text-align: center;
+        }
+        &_img{
+            width: 50%;
+            
+        }
+        &_information{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: 1fr 1fr;
+            align-items: center;
+            justify-items: center;
+            .title{
+                font-size: 12px;
+                color: @1BasicClr;
+            }
+            .cart_good_mark{
+
+            }
+            .cart_good_model{
+                text-align: center;
+                font-size: 13px;
+            }
+        }
+        &_name{
+            text-align: center;
+        }
+        &_quantity{
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            width: 150px;
+            margin: 0;
+            .btn-less, .btn-more{
+                border: 1px solid @2BasicClr;
+                background-color: @2BasicClr;
+                outline: none;
+                color: white;
+                &:active{
+                    background-color: lighten(@2BasicClr, 10%);
+                }
+            }
+            .btn-less{
+                border-radius: 3px 0 0 3px;
+            }
+            .btn-more{
+                border-radius: 0 3px 3px 0;
+            }
+            input{
+                text-align: center;
+                //min-width: 100px;
+                //padding: 0 10px;
+                width: 100px;
+                border: none;
+                border-top: 1px solid @1BasicClr;
+                border-bottom: 1px solid @1BasicClr;
+                outline: none;
+                &:focus{
+                    background-color: lighten(@1BasicClr,13%);
+                }
+            }
+        }
+        &_removeBtn{
+           .buttonSetting(80px, 40px,  @1BasicClr, @2BasicClr);
+
+           font-size: 15px;
+           align-self: center;
+        }
+    }
+}

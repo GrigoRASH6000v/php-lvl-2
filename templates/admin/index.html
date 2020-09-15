@@ -1,0 +1,24 @@
+{% include 'header.html' %}
+{% include 'navigation.html' %}
+
+<main class="main">
+    <div id="goods-data" class="catalog" >
+        {% for good in content_data.goods %}
+        <div class="catalog-item" data-id="{{ good.id_good_catalog }}">
+            <a href="index.php?path=good/{{ good.id_good_catalog }}" class="catalog-item_img">
+                <img  src='{{good.small_img}}' alt="" class="catalog-item_img">
+            </a>
+            <h3 class="catalog-item_mark">{{good.maker}}</h3>
+            <span href="#" class="catalog-item_model">{{good.model}}</span>
+            <span class="catalog-item_price">{{good.price}} ₽</span>
+            <!-- <button class="catalog-item_addToCart" data-id="{{good.id_good_catalog}}" data-name="add">Добавить в корзину</button> -->
+            <!-- <router-link :to="{name:'Editor', params: {dataGood:prod.id}}" v-if="$parent.stausPage=='admin'" class="catalog-item_edit" tag="button">Редактировать</router-link> -->
+            <button class="catalog-item_remove" data-name="removeCat" data-id="{{good.id_good_catalog}}">Удалить</button>
+            <a href="index.php?path=admin/editGood/{{ good.id_good_catalog }}" class="catalog-item_edit">Редактировать</a>
+            <!-- <li><a href="/categories/goods/{{ good.id_good }}/">{{ good.name }}</a></li> -->
+        </div>
+        {% endfor %}
+    </div>
+</main>
+
+{% include 'footer.html' %}

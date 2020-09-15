@@ -1,0 +1,25 @@
+<nav class="nav-bar">
+    <ul class="nav-bar_list">
+        {% for key,control in content_data.controls %}
+            <li><a href="index.php{{ key }}">{{ control }}</a></li>
+        {% endfor %}
+        <!-- <li><a href="index.php">Главная страница</a></li>
+        <li><a href="index.php?path=catalog">Каталог</a></li>
+        <li><a href="#">Личный кабинет</a></li> -->
+    </ul>
+    <!-- <ul>
+        {% for category in categories %}
+        <li>
+            <a href="/categories/?id={{ category.id_category }}" link="{{ category.id_category }}" class="category-link">{{ category.name }}</a>
+        </li>
+        {% endfor %}
+    </ul> -->
+    <!-- <div class="cart" id='cart'>
+        <div class="cart-list">
+            <span>Корзина пуста</span> 
+        </div>
+        <div class="cart_managment">
+            <button class="cart_clear-btn">Очистить корзину</button>
+        </div>
+    </div> -->
+</nav>
