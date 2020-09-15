@@ -1,0 +1,18 @@
+.main{
+    
+    padding: 0 50px;
+    .catalog{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 10px;
+        margin-bottom: 20px;
+        //grid-auto-columns: min-content ;
+        
+    }
+    .show-more{
+        .buttonSetting(150px, 35px, @1BasicClr, lighten(@2BasicClr, 10%));
+        display: block;
+        margin: 0 auto;
+    }
+}

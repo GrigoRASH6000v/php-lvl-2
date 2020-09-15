@@ -1,0 +1,25 @@
+{% include 'header.html' %}
+{% include 'navigation.html' %}
+
+<main class="main">
+    <form class="good-card" id="formEdit" data-id="{{ content_data.good.id_good_catalog}}">
+        <a href="{{ content_data.good.big_img}}" class="good-card_img-link" target="blank"><img src="{{ content_data.good.big_img}}" alt="" class="good-card_img"></a>
+        <div class="good-card_description">
+            <input type="hidden" name="id_good" value="{{ content_data.good.id_good_catalog}}">
+            <select name="category" id="category" >
+                {% for category in content_data.categoryAndMakers %}
+                    <option value="{{content_data.category.id_category}}">{{content_data.category.name}}</option>
+                {% endfor %}
+           </select>
+            <input type="text" name="maker"  class="good-card_description_title" value="{{ content_data.good.maker}}">
+            <p>Модель: <input type="text" name="model" value="{{content_data.good.model}}"></p>
+            <p>Цена: <input type="text" name="price" value="{{ content_data.good.price }} ">₽</p>
+            <p>Описание: </p>
+            <textarea name="info" id="info" rows="20">{{content_data.good.info}}</textarea>
+           
+            <button id='buyme' class='catalog-item_addToCart' data-name="saveChange">Сохранить</button>
+        </div>
+    </form>
+</main>
+
+{% include 'footer.html' %}

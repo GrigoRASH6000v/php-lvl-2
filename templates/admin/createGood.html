@@ -1,0 +1,38 @@
+{% include 'header.html' %}
+{% include 'navigation.html' %}
+<div class="main">
+    <div class="good-block-wrp">
+        <!-- action="index.php?path=admin/addGood" method="POST" -->
+        <form class="good-block" enctype="multipart/form-data" method="POST" id="formCreate">
+            <!-- onsubmit="return false" -->
+               <label for="category">Категория</label>
+               <select name="category" id="category" >
+                    {% for category in content_data.goods.category %}
+                        <option value="{{category.id_category}}">{{category.name}}</option>
+                    {% endfor %}
+               </select>
+               <label for="name">Фирма</label>
+               <select name="maker" id="maker">
+                    {% for maker in content_data.goods.makers %}
+                        <option value="{{maker.id_maker}}">{{maker.maker}}</option>
+                    {% endfor %}
+               </select>
+               <label for="model" >Модель</label>
+               <input type="text" name="model" id="model" >
+               <label for="price">Цена</label>
+               <input type="text" placeholder="" name="price" id="price">
+               <div class="form-group">
+                   <label class="label">
+                       <img src="" alt="" class="image">
+                       <span>Загрузите фотографию</span>
+                       <input type="file" name="photo" accept="image/*" id="file">
+                   </label>
+               </div>
+               <label for="info">Описание товара</label>
+               <textarea name="info" id="info" cols="30" rows="10"></textarea>
+               <button class="form-submit" data-name="addGood"> Сохранить</button>
+               <!-- <input type="submit" value="Сохранить" class="form-submit"> -->
+       </form>
+   </div>
+</div>
+{% include 'footer.html' %}

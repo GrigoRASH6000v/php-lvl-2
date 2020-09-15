@@ -1,0 +1,36 @@
+{% include 'header.html' %}
+{% include 'navigation.html' %}
+
+<main class="main">
+    <div class="cart">
+        
+        {% for good in content_data.goods %}
+        <div class="cart_good" data-id="{{ good.Id_good_cart }}">
+            <a href="index.php?path=catalog/goods/{{ good.id_good_catalog }}" class="cart_good_link">
+                <img  src='{{good.small_img}}' alt="" class="cart_good_img">
+            </a>
+            <div class="cart_good_information">
+                <span class="title">Марка</span>
+                <span class="title">Модель</span>
+                <span class="title">Цена</span>
+                <span class="title">Колличество</span>
+                <span class="title">Всего</span>
+                <span class="cart_good_mark">{{good.maker}}</span>
+                <span class="cart_good_model">{{good.model}}</span>
+                <span>{{good.price}}</span>
+                <div class="cart_good_quantity">
+                    <button class="btn-less" data-name="less" data-id="{{ good.id_good_catalog }}">-</button>
+                    <input type="text" value="{{good.quantity}}" data-name="quantity-good" data-id="{{ good.id_good_catalog }}">
+                    <button class="btn-more" data-name="more" data-id="{{ good.id_good_catalog }}">+</button>
+                </div>
+                <span class="cart_good_quantitySumm" data-id="{{ good.id_good_catalog }}">{{good.price*good.quantity}}</span>
+            </div>
+            <button class="cart_good_removeBtn" data-id="{{ good.Id_good_cart }}" data-name="remove">Удалить</button>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+{% include 'footer.html' %}
+<!-- href="index.php?path=basket/less/{{ good.Id_good_cart }}" -->
+<!-- href="index.php?path=basket/more/{{ good.Id_good_cart }}" -->
+<!-- href="index.php?path=basket/remove/{{ good.Id_good_cart }}" -->

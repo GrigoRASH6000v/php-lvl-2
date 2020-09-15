@@ -1,0 +1,16 @@
+{% include 'header.html' %}
+{% include 'navigation.html' %}
+<main class="main">
+    <div class="good-card">
+        <a href="{{ content_data.good.big_img}}" class="good-card_img-link" target="blank"><img src="{{ content_data.good.big_img}}" alt="" class="good-card_img"></a>
+        <div class="good-card_description">
+            <p>Производитель:<b class="good-card_description_title"> {{ content_data.good.maker}}</b></p>
+            <p>Модель: <b>{{content_data.good.model}}</b></p>
+            <p>Цена: <b>{{ content_data.good.price }} ₽</b></p>
+            <button id='buyme' class='catalog-item_addToCart'>Добавить в корзину</button>
+            <p>Описание: {{content_data.good.info}}</p>
+        </div>
+    </div>
+</main>
+
+{% include 'footer.html' %}
